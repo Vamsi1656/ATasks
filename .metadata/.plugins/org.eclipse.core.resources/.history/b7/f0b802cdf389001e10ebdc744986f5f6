@@ -1,0 +1,28 @@
+package com.java;
+import java.util.Scanner;
+
+public class ReverseTestString {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Step 1: Take a sentence as input from the user
+        System.out.print("Enter a sentence: ");
+        String inputSentence = scanner.nextLine();
+
+        // Step 2: Split the sentence into words
+        String[] words = inputSentence.split("\\s+");
+
+        // Step 3 & 4: Iterate over the words, reverse each word, and accumulate reversed words
+        StringBuilder reversedSentence = new StringBuilder();
+        for (String word : words) {
+            StringBuilder reversedWord = new StringBuilder(word).reverse();
+            reversedSentence.append(reversedWord).append(" ");
+        }
+
+        // Step 5: Print out the final reversed sentence
+        System.out.println("Reversed Sentence: " + reversedSentence.toString().trim());
+
+        // Close the scanner
+        scanner.close();
+    }
+}

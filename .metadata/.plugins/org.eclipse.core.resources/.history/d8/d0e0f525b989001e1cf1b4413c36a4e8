@@ -1,0 +1,29 @@
+package com.java;
+
+public class StringPermutation {
+
+	public static void main(String[] args) {
+	
+		String input="ABC";
+		
+		printPermutations(input);
+	}
+
+	public static void printPermutations(String str) {
+		
+		if(str==null || str.isEmpty()) {
+			System.out.println("String is empty");
+			return;
+		}
+		
+		generatePermutations("", str);
+	}
+
+	public static void generatePermutations(String string, String remaining) {
+		
+		if(remaining.isEmpty()) {
+			System.out.println(string);
+		}
+	}
+
+}

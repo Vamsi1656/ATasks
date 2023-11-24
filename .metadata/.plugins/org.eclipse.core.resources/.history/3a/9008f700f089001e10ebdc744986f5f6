@@ -1,0 +1,37 @@
+package com.java;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class CSVReader {
+    public static void main(String[] args) {
+        String csvFile = "D:\\"; // Provide the path to your CSV file
+        String line = "";
+        String csvSplitBy = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            while ((line = br.readLine()) != null) {
+                // Split the line on comma to get values
+                String[] values = line.split(csvSplitBy);
+
+                try {
+                    // Store values into appropriate data types
+                    int intValue = Integer.parseInt(values[0]);
+                    String stringValue = values[1];
+                    // Add more variables for additional columns as needed
+
+                    // Process or use the values as needed
+                    System.out.println("IntValue: " + intValue + ", StringValue: " + stringValue);
+                } catch (NumberFormatException e) {
+                    // Catch exception for invalid data (e.g., if the first column is not an integer)
+                    System.err.println("Error parsing values: " + e.getMessage());
+                }
+            }
+        } catch (IOException e) {
+            // Catch exception for file IO errors
+            e.printStackTrace();
+        }
+    }
+}
+

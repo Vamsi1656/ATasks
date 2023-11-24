@@ -1,0 +1,76 @@
+package com.java;
+
+import java.util.Random;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        int[][] A = generateRandomMatrix(250, 250);
+        int[][] B = generateRandomMatrix(250, 250);
+
+        System.out.println("Matrix Multiplication Timing Comparison:");
+
+        // Naive Matrix Multiplication
+        long startTimeNaive = System.currentTimeMillis();
+        int[][] resultNaive = multiplyNaive(A, B);
+        long endTimeNaive = System.currentTimeMillis();
+        long naiveTime = endTimeNaive - startTimeNaive;
+        System.out.println("Naive time: " + (naiveTime / 1000.0) + "s");
+
+        // Strassen's Matrix Multiplication
+        long startTimeStrassen = System.currentTimeMillis();
+        int[][] resultStrassen = multiplyStrassen(A, B);
+        long endTimeStrassen = System.currentTimeMillis();
+        long strassenTime = endTimeStrassen - startTimeStrassen;
+        System.out.println("Strassen's time: " + (strassenTime / 1000.0) + "s");
+
+        // Optionally, you can print or validate the results if needed.
+        // printMatrix(resultNaive);
+        // printMatrix(resultStrassen);
+    }
+
+    public static int[][] multiplyNaive(int[][] A, int[][] B) {
+        int m = A.length;
+        int n = A[0].length;
+        int p = B[0].length;
+        int[][] C = new int[m][p];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                for (int k = 0; k < n; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+
+        return C;
+    }
+
+    public static int[][] multiplyStrassen(int[][] A, int[][] B) {
+        // TODO: Implement Strassen's algorithm here
+        // For simplicity, we'll just use the naive method for now
+        return multiplyNaive(A, B);
+    }
+
+    public static int[][] generateRandomMatrix(int rows, int cols) {
+        int[][] matrix = new int[rows][cols];
+        Random rand = new Random();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = rand.nextInt(10); // Adjust the range of random values as needed
+            }
+        }
+
+        return matrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}

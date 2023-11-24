@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module JavaProjects1 {
+	requires junit;
+}
