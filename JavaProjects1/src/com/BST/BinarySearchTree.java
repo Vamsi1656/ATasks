@@ -1,4 +1,5 @@
-package com.java;
+package com.BST;
+
 
 class Node {
     int data;
@@ -58,4 +59,5 @@ public class BinarySearchTree {
         tree.inOrder(tree.root);
     }
 }
+
 
