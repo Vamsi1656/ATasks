@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class CSVReader {
     public static void main(String[] args) {
-//        String csvFile = "C:\\Users\\dell\\Downloads"; 
+
         String line = "";
         String csvSplitBy = ",";
 
